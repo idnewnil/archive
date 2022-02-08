@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="0aeb7a11-dc01-489a-84a7-238e2373f28b" name="yilao" url="http://api.yilao.tk">
+        <fileTransfer rootFolder="/root" accessType="SFTP" host="api.yilao.tk" port="22" sshConfigId="3be18ee3-5b08-4b56-b9c7-79e1dea47232" sshConfig="root@api.yilao.tk:22 key" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

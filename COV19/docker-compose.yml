@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+  cov19:
+    image: cov19
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 5000:5000
+    environment:
+      - HF_HOME=/tmp/cache/huggingface
+    volumes:
+      - ./cache:/tmp/cache
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]

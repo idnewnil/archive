@@ -1,0 +1,16 @@
+:: 用Qt命令行进入到脚本目录并执行
+@echo off
+:: 固定目录
+set develop_dir="D:\Project\Qt\MyMiniCC"
+set build_dir="D:\Project\Qt\build-MyMiniCC-Desktop_Qt_6_0_0_MSVC2019_64bit-Release\release"
+cd %build_dir%
+D:
+mkdir release
+copy /y MyMiniCC.exe release
+cd release
+windeployqt MyMiniCC.exe
+copy /y %develop_dir%\release\* .
+cd ..
+7z a -y release.zip release\
+rmdir /s /q release
+start .

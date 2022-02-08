@@ -1,0 +1,4 @@
+# ScnuMoodleSpider
+华师砺儒云课堂爬虫
+
+cookies.json文件可以从Chrome插件EditThisCookie导出

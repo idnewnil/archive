@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="NoSqlConfiguration">
+    <option name="serverConfigurations">
+      <list>
+        <ServerConfiguration>
+          <option name="connectOnIdeStartup" value="true" />
+          <option name="databaseVendor" value="DatabaseVendor{name='RedisDB'}" />
+          <option name="label" value="localhost" />
+          <option name="serverUrl" value="localhost:6379" />
+        </ServerConfiguration>
+      </list>
+    </option>
+    <option name="shellPathByDatabaseVendor">
+      <map>
+        <entry key="DatabaseVendor{name='RedisDB'}" value="/usr/bin/redis-cli" />
+      </map>
+    </option>
+  </component>
+</project>

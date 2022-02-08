@@ -1,0 +1,7 @@
+*
+!CMakeLists.txt
+!.gitignore
+!README.md
+!*.cpp
+!*.h
+!zoj1805错误解法及原因

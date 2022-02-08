@@ -1,0 +1,37 @@
+version: "3.7"
+services:
+  app:
+    build: .
+    ports:
+      - 15000:8001
+    volumes:
+      - ./data:/app/data
+    depends_on:
+      - mysql
+      - redis
+      - adminer
+      - phpredisadmin
+  mysql:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - 33061:3306
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+  redis:
+    image: redis
+    ports:
+      - 63791:6379
+  adminer:
+    image: adminer
+    ports:
+      - 18002:8080
+  phpredisadmin:
+    build:
+      dockerfile: PhpredisadminDockerfile
+      context: .
+    environment:
+      REDIS_1_HOST: redis
+    ports:
+      - 18003:80

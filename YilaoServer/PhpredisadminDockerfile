@@ -1,0 +1,2 @@
+FROM erikdubbelboer/phpredisadmin
+RUN sed -i 's/\(maxkeyle.*=> \)\(.*\)/\11000,/g' /src/app/includes/config.sample.inc.php

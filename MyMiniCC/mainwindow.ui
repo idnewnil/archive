@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>894</width>
+    <height>649</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QTextEdit" name="codeEdit"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>894</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu_F">
+    <property name="title">
+     <string>文件(&amp;F)</string>
+    </property>
+    <addaction name="actionnewFile"/>
+    <addaction name="actionopenFile"/>
+    <addaction name="actionsaveFile"/>
+    <addaction name="actionexit"/>
+   </widget>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>构建(&amp;B)</string>
+    </property>
+    <addaction name="actionanalyzeTokens"/>
+    <addaction name="actionbuildTree"/>
+    <addaction name="actionbuildSymtab"/>
+   </widget>
+   <widget class="QMenu" name="menu_V">
+    <property name="title">
+     <string>视图(&amp;V)</string>
+    </property>
+    <addaction name="actioncompileOutput"/>
+   </widget>
+   <addaction name="menu_F"/>
+   <addaction name="menu_V"/>
+   <addaction name="menu"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionopenFile"/>
+   <addaction name="actionsaveFile"/>
+   <addaction name="separator"/>
+   <addaction name="actioncompileOutput"/>
+   <addaction name="separator"/>
+   <addaction name="actionanalyzeTokens"/>
+   <addaction name="actionbuildTree"/>
+   <addaction name="actionbuildSymtab"/>
+   <addaction name="separator"/>
+   <addaction name="actionCode"/>
+   <addaction name="actiontips"/>
+  </widget>
+  <widget class="QDockWidget" name="compileOutputDockWidget">
+   <attribute name="dockWidgetArea">
+    <number>8</number>
+   </attribute>
+   <widget class="QWidget" name="compileOutputDockContents">
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item>
+      <widget class="QTextBrowser" name="compileOutputBrowser"/>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <action name="actionnewFile">
+   <property name="text">
+    <string>新建文件</string>
+   </property>
+  </action>
+  <action name="actionopenFile">
+   <property name="text">
+    <string>打开文件</string>
+   </property>
+  </action>
+  <action name="actionexit">
+   <property name="text">
+    <string>退出</string>
+   </property>
+  </action>
+  <action name="actionanalyzeTokens">
+   <property name="text">
+    <string>分析Tokens</string>
+   </property>
+   <property name="toolTip">
+    <string>分析Tokens</string>
+   </property>
+  </action>
+  <action name="actionbuildTree">
+   <property name="text">
+    <string>构建语法树</string>
+   </property>
+   <property name="toolTip">
+    <string>构建语法树</string>
+   </property>
+  </action>
+  <action name="actioncompileOutput">
+   <property name="text">
+    <string>查看输出</string>
+   </property>
+   <property name="toolTip">
+    <string>查看输出</string>
+   </property>
+  </action>
+  <action name="actionsaveFile">
+   <property name="text">
+    <string>保存文件</string>
+   </property>
+  </action>
+  <action name="actionbuildSymtab">
+   <property name="text">
+    <string>符号表构建</string>
+   </property>
+   <property name="toolTip">
+    <string>符号表构建</string>
+   </property>
+  </action>
+  <action name="actiontips">
+   <property name="text">
+    <string>按CRTL+滚轮放缩文本</string>
+   </property>
+   <property name="toolTip">
+    <string>按CRTL+滚轮放缩文本</string>
+   </property>
+  </action>
+  <action name="actionCode">
+   <property name="text">
+    <string>运行</string>
+   </property>
+   <property name="toolTip">
+    <string>运行程序</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>actionexit</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>381</x>
+     <y>324</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

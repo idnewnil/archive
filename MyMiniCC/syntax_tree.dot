@@ -1,0 +1,538 @@
+strict digraph syntax_tree_struct {
+    node [fontname="'JetBrains Mono',Consolas,'Courier New',monospace"];
+    subgraph cluster_additiveexpression {
+        additiveexpression [label="", shape=point];
+        0 [label="additiveexpression", shape=box];
+        additiveexpression -> 0 [style=invis];
+        1 [label="expression", shape=triangle];
+        0 -> 1;
+        2 [label="termEx", shape=triangle, style=dashed];
+        0 -> 2;
+        3 [label="additiveexpressionEx", shape=triangle, style=dashed];
+        0 -> 3;
+        4 [label="additiveexpression", shape=box];
+        additiveexpression -> 4 [style=invis];
+        5 [color=red, fontcolor=red, label="ID", shape=triangle];
+        4 -> 5 [color=red];
+        6 [label="factorEx", shape=triangle, style=dashed];
+        4 -> 6;
+        7 [label="termEx", shape=triangle, style=dashed];
+        4 -> 7;
+        8 [label="additiveexpressionEx", shape=triangle, style=dashed];
+        4 -> 8;
+        9 [label="additiveexpression", shape=box];
+        additiveexpression -> 9 [style=invis];
+        10 [color=red, fontcolor=red, label="NUM", shape=triangle];
+        9 -> 10 [color=red];
+        11 [label="termEx", shape=triangle, style=dashed];
+        9 -> 11;
+        12 [label="additiveexpressionEx", shape=triangle, style=dashed];
+        9 -> 12;
+    }
+    subgraph cluster_additiveexpressionEx {
+        additiveexpressionEx [label="", shape=point];
+        13 [label="additiveexpressionEx", shape=box];
+        additiveexpressionEx -> 13 [style=invis];
+        14 [label="addop", shape=triangle];
+        13 -> 14;
+        15 [label="term", shape=triangle];
+        13 -> 15;
+        16 [label="additiveexpressionEx", shape=triangle, style=dashed];
+        13 -> 16;
+    }
+    subgraph cluster_addop {
+        addop [label="", shape=point];
+        17 [label="addop", shape=box];
+        addop -> 17 [style=invis];
+        18 [color=red, fontcolor=red, label="+", shape=triangle];
+        17 -> 18 [color=red];
+        19 [label="addop", shape=box];
+        addop -> 19 [style=invis];
+        20 [color=red, fontcolor=red, label="-", shape=triangle];
+        19 -> 20 [color=red];
+    }
+    subgraph cluster_arglistEx {
+        arglistEx [label="", shape=point];
+        21 [label="arglistEx", shape=box];
+        arglistEx -> 21 [style=invis];
+        22 [label="expression", shape=triangle];
+        21 -> 22;
+        23 [label="arglistEx", shape=triangle, style=dashed];
+        21 -> 23;
+    }
+    subgraph cluster_args {
+        args [label="", shape=point];
+        24 [label="args", shape=box];
+        args -> 24 [style=invis];
+        25 [label="expression", shape=triangle];
+        24 -> 25;
+        26 [label="termEx", shape=triangle, style=dashed];
+        24 -> 26;
+        27 [label="additiveexpressionEx", shape=triangle, style=dashed];
+        24 -> 27;
+        28 [label="simpleexpressionEx", shape=triangle, style=dashed];
+        24 -> 28;
+        29 [label="arglistEx", shape=triangle, style=dashed];
+        24 -> 29;
+        30 [label="args", shape=box];
+        args -> 30 [style=invis];
+        31 [color=red, fontcolor=red, label="ID", shape=triangle];
+        30 -> 31 [color=red];
+        32 [label="expressionEx", shape=triangle, style=dashed];
+        30 -> 32;
+        33 [label="arglistEx", shape=triangle, style=dashed];
+        30 -> 33;
+        34 [label="args", shape=box];
+        args -> 34 [style=invis];
+        35 [color=red, fontcolor=red, label="NUM", shape=triangle];
+        34 -> 35 [color=red];
+        36 [label="termEx", shape=triangle, style=dashed];
+        34 -> 36;
+        37 [label="additiveexpressionEx", shape=triangle, style=dashed];
+        34 -> 37;
+        38 [label="simpleexpressionEx", shape=triangle, style=dashed];
+        34 -> 38;
+        39 [label="arglistEx", shape=triangle, style=dashed];
+        34 -> 39;
+    }
+    subgraph cluster_compoundstmt {
+        compoundstmt [label="", shape=point];
+        40 [label="compoundstmt", shape=box];
+        compoundstmt -> 40 [style=invis];
+        41 [label="localdeclarations", shape=triangle, style=dashed];
+        40 -> 41;
+        42 [label="statementlist", shape=triangle, style=dashed];
+        40 -> 42;
+    }
+    subgraph cluster_declarationEx {
+        declarationEx [label="", shape=point];
+        43 [label="declarationEx", shape=box];
+        declarationEx -> 43 [style=invis];
+        44 [label="params", shape=triangle];
+        43 -> 44;
+        45 [label="compoundstmt", shape=triangle];
+        43 -> 45;
+        46 [label="declarationEx", shape=box];
+        declarationEx -> 46 [style=invis];
+        47 [color=red, fontcolor=red, label="NUM", shape=triangle];
+        46 -> 47 [color=red];
+    }
+    subgraph cluster_declarationlistEx {
+        declarationlistEx [label="", shape=point];
+        48 [label="declarationlistEx", shape=box];
+        declarationlistEx -> 48 [style=invis];
+        49 [color=red, fontcolor=red, label="ID", shape=triangle];
+        48 -> 49 [color=red];
+        50 [label="declarationEx", shape=triangle];
+        48 -> 50;
+        51 [label="declarationlistEx", shape=triangle, style=dashed];
+        48 -> 51;
+        52 [label="declarationlistEx", shape=box];
+        declarationlistEx -> 52 [style=invis];
+        53 [color=red, fontcolor=red, label="ID", shape=triangle];
+        52 -> 53 [color=red];
+        54 [label="declarationEx", shape=triangle];
+        52 -> 54;
+        55 [label="declarationlistEx", shape=triangle, style=dashed];
+        52 -> 55;
+    }
+    subgraph cluster_expression {
+        expression [label="", shape=point];
+        56 [label="expression", shape=box];
+        expression -> 56 [style=invis];
+        57 [label="expression", shape=triangle];
+        56 -> 57;
+        58 [label="termEx", shape=triangle, style=dashed];
+        56 -> 58;
+        59 [label="additiveexpressionEx", shape=triangle, style=dashed];
+        56 -> 59;
+        60 [label="simpleexpressionEx", shape=triangle, style=dashed];
+        56 -> 60;
+        61 [label="expression", shape=box];
+        expression -> 61 [style=invis];
+        62 [color=red, fontcolor=red, label="ID", shape=triangle];
+        61 -> 62 [color=red];
+        63 [label="expressionEx", shape=triangle, style=dashed];
+        61 -> 63;
+        64 [label="expression", shape=box];
+        expression -> 64 [style=invis];
+        65 [color=red, fontcolor=red, label="NUM", shape=triangle];
+        64 -> 65 [color=red];
+        66 [label="termEx", shape=triangle, style=dashed];
+        64 -> 66;
+        67 [label="additiveexpressionEx", shape=triangle, style=dashed];
+        64 -> 67;
+        68 [label="simpleexpressionEx", shape=triangle, style=dashed];
+        64 -> 68;
+    }
+    subgraph cluster_expressionEx {
+        expressionEx [label="", shape=point];
+        69 [label="expressionEx", shape=box];
+        expressionEx -> 69 [style=invis];
+        70 [label="args", shape=triangle, style=dashed];
+        69 -> 70;
+        71 [label="termEx", shape=triangle, style=dashed];
+        69 -> 71;
+        72 [label="additiveexpressionEx", shape=triangle, style=dashed];
+        69 -> 72;
+        73 [label="simpleexpressionEx", shape=triangle, style=dashed];
+        69 -> 73;
+        74 [label="expressionEx", shape=box];
+        expressionEx -> 74 [style=invis];
+        75 [label="expression", shape=triangle];
+        74 -> 75;
+        76 [label="expressionEx", shape=box];
+        expressionEx -> 76 [style=invis];
+        77 [label="expression", shape=triangle];
+        76 -> 77;
+        78 [label="expressionEx", shape=triangle, style=dashed];
+        76 -> 78;
+        79 [label="expressionEx", shape=box];
+        expressionEx -> 79 [style=invis];
+        80 [label="addop", shape=triangle];
+        79 -> 80;
+        81 [label="term", shape=triangle];
+        79 -> 81;
+        82 [label="additiveexpressionEx", shape=triangle, style=dashed];
+        79 -> 82;
+        83 [label="simpleexpressionEx", shape=triangle, style=dashed];
+        79 -> 83;
+        84 [label="expressionEx", shape=box];
+        expressionEx -> 84 [style=invis];
+        85 [label="mulop", shape=triangle];
+        84 -> 85;
+        86 [label="factor", shape=triangle];
+        84 -> 86;
+        87 [label="termEx", shape=triangle, style=dashed];
+        84 -> 87;
+        88 [label="additiveexpressionEx", shape=triangle, style=dashed];
+        84 -> 88;
+        89 [label="simpleexpressionEx", shape=triangle, style=dashed];
+        84 -> 89;
+        90 [label="expressionEx", shape=box];
+        expressionEx -> 90 [style=invis];
+        91 [label="relop", shape=triangle];
+        90 -> 91;
+        92 [label="additiveexpression", shape=triangle];
+        90 -> 92;
+    }
+    subgraph cluster_factor {
+        factor [label="", shape=point];
+        93 [label="factor", shape=box];
+        factor -> 93 [style=invis];
+        94 [label="expression", shape=triangle];
+        93 -> 94;
+        95 [label="factor", shape=box];
+        factor -> 95 [style=invis];
+        96 [color=red, fontcolor=red, label="ID", shape=triangle];
+        95 -> 96 [color=red];
+        97 [label="factorEx", shape=triangle, style=dashed];
+        95 -> 97;
+        98 [label="factor", shape=box];
+        factor -> 98 [style=invis];
+        99 [color=red, fontcolor=red, label="NUM", shape=triangle];
+        98 -> 99 [color=red];
+    }
+    subgraph cluster_factorEx {
+        factorEx [label="", shape=point];
+        100 [label="factorEx", shape=box];
+        factorEx -> 100 [style=invis];
+        101 [label="args", shape=triangle, style=dashed];
+        100 -> 101;
+        102 [label="factorEx", shape=box];
+        factorEx -> 102 [style=invis];
+        103 [label="expression", shape=triangle];
+        102 -> 103;
+    }
+    subgraph cluster_localdeclarations {
+        localdeclarations [label="", shape=point];
+        104 [label="localdeclarations", shape=box];
+        localdeclarations -> 104 [style=invis];
+        105 [label="vardeclaration", shape=triangle];
+        104 -> 105;
+        106 [label="localdeclarations", shape=triangle, style=dashed];
+        104 -> 106;
+    }
+    subgraph cluster_mulop {
+        mulop [label="", shape=point];
+        107 [label="mulop", shape=box];
+        mulop -> 107 [style=invis];
+        108 [color=red, fontcolor=red, label="*", shape=triangle];
+        107 -> 108 [color=red];
+        109 [label="mulop", shape=box];
+        mulop -> 109 [style=invis];
+        110 [color=red, fontcolor=red, label="/", shape=triangle];
+        109 -> 110 [color=red];
+    }
+    subgraph cluster_param {
+        param [label="", shape=point];
+        111 [label="param", shape=box];
+        param -> 111 [style=invis];
+        112 [color=red, fontcolor=red, label="ID", shape=triangle];
+        111 -> 112 [color=red];
+        113 [label="paramEx", shape=triangle, style=dashed];
+        111 -> 113;
+        114 [label="param", shape=box];
+        param -> 114 [style=invis];
+        115 [color=red, fontcolor=red, label="ID", shape=triangle];
+        114 -> 115 [color=red];
+        116 [label="paramEx", shape=triangle, style=dashed];
+        114 -> 116;
+    }
+    subgraph cluster_paramEx {
+        paramEx [label="", shape=point];
+        117 [label="paramEx", shape=box];
+        paramEx -> 117 [style=invis];
+    }
+    subgraph cluster_paramlistEx {
+        paramlistEx [label="", shape=point];
+        118 [label="paramlistEx", shape=box];
+        paramlistEx -> 118 [style=invis];
+        119 [label="param", shape=triangle];
+        118 -> 119;
+        120 [label="paramlistEx", shape=triangle, style=dashed];
+        118 -> 120;
+    }
+    subgraph cluster_params {
+        params [label="", shape=point];
+        121 [label="params", shape=box];
+        params -> 121 [style=invis];
+        122 [color=red, fontcolor=red, label="ID", shape=triangle];
+        121 -> 122 [color=red];
+        123 [label="paramEx", shape=triangle, style=dashed];
+        121 -> 123;
+        124 [label="paramlistEx", shape=triangle, style=dashed];
+        121 -> 124;
+        125 [label="params", shape=box];
+        params -> 125 [style=invis];
+        126 [label="paramsEx", shape=triangle, style=dashed];
+        125 -> 126;
+    }
+    subgraph cluster_paramsEx {
+        paramsEx [label="", shape=point];
+        127 [label="paramsEx", shape=box];
+        paramsEx -> 127 [style=invis];
+        128 [color=red, fontcolor=red, label="ID", shape=triangle];
+        127 -> 128 [color=red];
+        129 [label="paramEx", shape=triangle, style=dashed];
+        127 -> 129;
+        130 [label="paramlistEx", shape=triangle, style=dashed];
+        127 -> 130;
+    }
+    subgraph cluster_program {
+        program [label="", shape=point];
+        131 [label="program", shape=box];
+        program -> 131 [style=invis];
+        132 [color=red, fontcolor=red, label="ID", shape=triangle];
+        131 -> 132 [color=red];
+        133 [label="declarationEx", shape=triangle];
+        131 -> 133;
+        134 [label="declarationlistEx", shape=triangle, style=dashed];
+        131 -> 134;
+        135 [label="program", shape=box];
+        program -> 135 [style=invis];
+        136 [color=red, fontcolor=red, label="ID", shape=triangle];
+        135 -> 136 [color=red];
+        137 [label="declarationEx", shape=triangle];
+        135 -> 137;
+        138 [label="declarationlistEx", shape=triangle, style=dashed];
+        135 -> 138;
+    }
+    subgraph cluster_programEx {
+        programEx [label="", shape=point];
+        139 [label="programEx", shape=box];
+        programEx -> 139 [style=invis];
+        140 [label="program", shape=triangle];
+        139 -> 140;
+    }
+    subgraph cluster_relop {
+        relop [label="", shape=point];
+        141 [label="relop", shape=box];
+        relop -> 141 [style=invis];
+        142 [color=red, fontcolor=red, label="!=", shape=triangle];
+        141 -> 142 [color=red];
+        143 [label="relop", shape=box];
+        relop -> 143 [style=invis];
+        144 [color=red, fontcolor=red, label="<", shape=triangle];
+        143 -> 144 [color=red];
+        145 [label="relop", shape=box];
+        relop -> 145 [style=invis];
+        146 [color=red, fontcolor=red, label="<=", shape=triangle];
+        145 -> 146 [color=red];
+        147 [label="relop", shape=box];
+        relop -> 147 [style=invis];
+        148 [color=red, fontcolor=red, label="==", shape=triangle];
+        147 -> 148 [color=red];
+        149 [label="relop", shape=box];
+        relop -> 149 [style=invis];
+        150 [color=red, fontcolor=red, label=">", shape=triangle];
+        149 -> 150 [color=red];
+        151 [label="relop", shape=box];
+        relop -> 151 [style=invis];
+        152 [color=red, fontcolor=red, label=">=", shape=triangle];
+        151 -> 152 [color=red];
+    }
+    subgraph cluster_returnstmtEx {
+        returnstmtEx [label="", shape=point];
+        153 [label="returnstmtEx", shape=box];
+        returnstmtEx -> 153 [style=invis];
+        154 [label="expression", shape=triangle];
+        153 -> 154;
+        155 [label="termEx", shape=triangle, style=dashed];
+        153 -> 155;
+        156 [label="additiveexpressionEx", shape=triangle, style=dashed];
+        153 -> 156;
+        157 [label="simpleexpressionEx", shape=triangle, style=dashed];
+        153 -> 157;
+        158 [label="returnstmtEx", shape=box];
+        returnstmtEx -> 158 [style=invis];
+        159 [color=red, fontcolor=red, label="ID", shape=triangle];
+        158 -> 159 [color=red];
+        160 [label="expressionEx", shape=triangle, style=dashed];
+        158 -> 160;
+        161 [label="returnstmtEx", shape=box];
+        returnstmtEx -> 161 [style=invis];
+        162 [color=red, fontcolor=red, label="NUM", shape=triangle];
+        161 -> 162 [color=red];
+        163 [label="termEx", shape=triangle, style=dashed];
+        161 -> 163;
+        164 [label="additiveexpressionEx", shape=triangle, style=dashed];
+        161 -> 164;
+        165 [label="simpleexpressionEx", shape=triangle, style=dashed];
+        161 -> 165;
+    }
+    subgraph cluster_selectionstmtEx {
+        selectionstmtEx [label="", shape=point];
+        166 [label="selectionstmtEx", shape=box];
+        selectionstmtEx -> 166 [style=invis];
+        167 [label="statement", shape=triangle];
+        166 -> 167;
+    }
+    subgraph cluster_simpleexpressionEx {
+        simpleexpressionEx [label="", shape=point];
+        168 [label="simpleexpressionEx", shape=box];
+        simpleexpressionEx -> 168 [style=invis];
+        169 [label="relop", shape=triangle];
+        168 -> 169;
+        170 [label="additiveexpression", shape=triangle];
+        168 -> 170;
+    }
+    subgraph cluster_statement {
+        statement [label="", shape=point];
+        171 [label="statement", shape=box];
+        statement -> 171 [style=invis];
+        172 [label="expression", shape=triangle];
+        171 -> 172;
+        173 [label="termEx", shape=triangle, style=dashed];
+        171 -> 173;
+        174 [label="additiveexpressionEx", shape=triangle, style=dashed];
+        171 -> 174;
+        175 [label="simpleexpressionEx", shape=triangle, style=dashed];
+        171 -> 175;
+        176 [label="statement", shape=box];
+        statement -> 176 [style=invis];
+        177 [color=red, fontcolor=red, label="ID", shape=triangle];
+        176 -> 177 [color=red];
+        178 [label="expressionEx", shape=triangle, style=dashed];
+        176 -> 178;
+        179 [label="statement", shape=box];
+        statement -> 179 [style=invis];
+        180 [color=red, fontcolor=red, label="NUM", shape=triangle];
+        179 -> 180 [color=red];
+        181 [label="termEx", shape=triangle, style=dashed];
+        179 -> 181;
+        182 [label="additiveexpressionEx", shape=triangle, style=dashed];
+        179 -> 182;
+        183 [label="simpleexpressionEx", shape=triangle, style=dashed];
+        179 -> 183;
+        184 [label="statement", shape=box];
+        statement -> 184 [style=invis];
+        185 [label="expression", shape=triangle];
+        184 -> 185;
+        186 [label="statement", shape=triangle];
+        184 -> 186;
+        187 [label="selectionstmtEx", shape=triangle, style=dashed];
+        184 -> 187;
+        188 [label="statement", shape=box];
+        statement -> 188 [style=invis];
+        189 [label="returnstmtEx", shape=triangle];
+        188 -> 189;
+        190 [label="statement", shape=box];
+        statement -> 190 [style=invis];
+        191 [label="expression", shape=triangle];
+        190 -> 191;
+        192 [label="statement", shape=triangle];
+        190 -> 192;
+        193 [label="statement", shape=box];
+        statement -> 193 [style=invis];
+        194 [label="localdeclarations", shape=triangle, style=dashed];
+        193 -> 194;
+        195 [label="statementlist", shape=triangle, style=dashed];
+        193 -> 195;
+    }
+    subgraph cluster_statementlist {
+        statementlist [label="", shape=point];
+        196 [label="statementlist", shape=box];
+        statementlist -> 196 [style=invis];
+        197 [label="statement", shape=triangle];
+        196 -> 197;
+        198 [label="statementlist", shape=triangle, style=dashed];
+        196 -> 198;
+    }
+    subgraph cluster_term {
+        term [label="", shape=point];
+        199 [label="term", shape=box];
+        term -> 199 [style=invis];
+        200 [label="expression", shape=triangle];
+        199 -> 200;
+        201 [label="termEx", shape=triangle, style=dashed];
+        199 -> 201;
+        202 [label="term", shape=box];
+        term -> 202 [style=invis];
+        203 [color=red, fontcolor=red, label="ID", shape=triangle];
+        202 -> 203 [color=red];
+        204 [label="factorEx", shape=triangle, style=dashed];
+        202 -> 204;
+        205 [label="termEx", shape=triangle, style=dashed];
+        202 -> 205;
+        206 [label="term", shape=box];
+        term -> 206 [style=invis];
+        207 [color=red, fontcolor=red, label="NUM", shape=triangle];
+        206 -> 207 [color=red];
+        208 [label="termEx", shape=triangle, style=dashed];
+        206 -> 208;
+    }
+    subgraph cluster_termEx {
+        termEx [label="", shape=point];
+        209 [label="termEx", shape=box];
+        termEx -> 209 [style=invis];
+        210 [label="mulop", shape=triangle];
+        209 -> 210;
+        211 [label="factor", shape=triangle];
+        209 -> 211;
+        212 [label="termEx", shape=triangle, style=dashed];
+        209 -> 212;
+    }
+    subgraph cluster_vardeclaration {
+        vardeclaration [label="", shape=point];
+        213 [label="vardeclaration", shape=box];
+        vardeclaration -> 213 [style=invis];
+        214 [color=red, fontcolor=red, label="ID", shape=triangle];
+        213 -> 214 [color=red];
+        215 [label="vardeclarationEx", shape=triangle];
+        213 -> 215;
+        216 [label="vardeclaration", shape=box];
+        vardeclaration -> 216 [style=invis];
+        217 [color=red, fontcolor=red, label="ID", shape=triangle];
+        216 -> 217 [color=red];
+        218 [label="vardeclarationEx", shape=triangle];
+        216 -> 218;
+    }
+    subgraph cluster_vardeclarationEx {
+        vardeclarationEx [label="", shape=point];
+        219 [label="vardeclarationEx", shape=box];
+        vardeclarationEx -> 219 [style=invis];
+        220 [color=red, fontcolor=red, label="NUM", shape=triangle];
+        219 -> 220 [color=red];
+    }
+}

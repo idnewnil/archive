@@ -1,0 +1,4 @@
+site_name: YilaoDocs
+nav:
+  - '文档': 'index.md'
+  - '测试': 'test.md'

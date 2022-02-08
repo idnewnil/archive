@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="core.js">
+    </script>
+    <style>
+        #app {
+            display: inline-block;
+            margin: 30px auto 0;
+            user-select: none;
+        }
+
+        #panel {
+            display: inline-block;
+            padding: 10px 10px;
+            width: 150px;
+        }
+
+        #cvs {
+            display: inline-block;
+            margin: 0 auto;
+            border: 4px solid #555;
+            padding: 5px;
+            border-radius: 10px;
+            background-color: #111;
+            width: 288px;
+            height: 512px;
+        }
+    </style>
+</head>
+<body>
+<center>
+    <div id="app">
+        <div id="panel">
+            <button onclick="void((ql.enable = !ql.enable) & (this.innerHTML = !ql.enable?'开启外挂😄':'关闭外挂😄'))"
+                    style="display: block">开启外挂😄
+            </button>
+            <button onclick="void((game.dye=!game.dye) & (this.innerHTML = !game.dye?'搞颜色😋':'贴图片😋'))"
+                    style="display: block">搞颜色😋
+            </button>
+            <p style="display: block">帧率控制</p>
+            <button onclick="game.maxFps+=5">gkd</button>
+            <button onclick="game.maxFps-=5">慢一点</button>
+            <p style="display: block">游戏参数</p>
+            <button onclick="guide.physics.gravity+=0.1">重力+</button>
+            <button onclick="guide.physics.gravity-=0.1">重力-</button>
+            <button onclick="guide.pipe.gapBetweenUpAndBottom+=5">管道空隙+</button>
+            <button onclick="guide.pipe.gapBetweenUpAndBottom-=5">管道空隙-</button>
+            <p style="display: block">数据显示</p>
+            <p id="fps"></p>
+            <p id="gravity"></p>
+            <p id="gap"></p>
+            <p id="bird-v"></p>
+            <p id="bird-y"></p>
+            <p id="maxScore"></p>
+            <p id="score"></p>
+        </div>
+        <canvas id="cvs" width="288" height="512">
+
+        </canvas>
+    </div>
+</center>
+<script>
+    let fps = document.getElementById("fps");
+    let gravity = document.getElementById("gravity");
+    let gap = document.getElementById("gap");
+    let bird_v = document.getElementById("bird-v");
+    let bird_y = document.getElementById("bird-y");
+    let maxScore = document.getElementById("maxScore");
+    let score = document.getElementById("score");
+
+    function then() {
+        fps.innerHTML = "帧率：" + game.maxFps;
+        gravity.innerHTML = "重力：" + guide.physics.gravity.toFixed(2);
+        gap.innerHTML = "管道空隙：" + guide.pipe.gapBetweenUpAndBottom.toFixed(2);
+        bird_v.innerHTML = game.bird ? "小鸟v：" + game.bird.ySpeed.toFixed(2) : undefined;
+        bird_y.innerHTML = game.bird ? "小鸟y：" + game.bird.y.toFixed(2) : undefined;
+        maxScore.innerHTML = "最大分数：" + game.maxScore;
+        score.innerHTML = "当前分数：" + game.score;
+        loopAnd(then);
+    }
+
+    window.addEventListener("load", function () {
+        loopAnd(then);
+    });
+</script>
+</body>
+</html>

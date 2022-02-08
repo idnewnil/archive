@@ -1,0 +1,48 @@
+strict digraph structs {
+    graph [fontname="'JetBrains Mono',Consolas,'Courier New',monospace" rankdir="LR"];
+    node [fontname="'JetBrains Mono',Consolas,'Courier New',monospace" ];
+    edge [fontname="'JetBrains Mono',Consolas,'Courier New',monospace"];
+
+    // 结束
+    DONE [peripheries=2];
+
+    // 开始
+    NONE [shape=none, label=""];
+    NONE -> START;
+    START -> START [label="white\nspace"];
+    START:ne -> DONE [label="other"];
+
+    // 数字
+    START -> IN_NUM [label="digit"];
+    IN_NUM -> IN_NUM [label="digit"];
+    IN_NUM -> DONE [label="[other]"];
+    
+    // 标识符
+    START -> IN_ID [label="letter"];
+    IN_ID -> IN_ID [label="letter"];
+    IN_ID -> DONE [label="[other]"];
+
+    // !
+    START -> IN_NE [label="!"]
+    IN_NE -> DONE [label="="]
+
+    // 歧义：第一类特殊符号，后面可能会接等号构成另一种Token
+    START -> IS_SPECIAL_OP1 [label="< > ="];
+    IS_SPECIAL_OP1 -> DONE [label="= [other]"];
+
+    // 歧义：除号或者注释
+    subgraph {
+        rank = same;
+        START -> IN_COMMENT -> IS_DIVIDE_OP [style=invis];
+    }
+    START -> IS_DIVIDE_OP:w [label="/"];
+    IS_DIVIDE_OP -> DONE [label="[other]"]
+
+    // 注释
+    IS_DIVIDE_OP -> IN_COMMENT [label="*", constraint=flase];
+    EXITING_COMMENT -> IN_COMMENT [label="other"];
+    EXITING_COMMENT -> EXITING_COMMENT [label="*"];
+    IN_COMMENT -> IN_COMMENT [label="other"];
+    IN_COMMENT -> EXITING_COMMENT [label="*"];
+    EXITING_COMMENT -> START [label="/"];
+}

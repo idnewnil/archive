@@ -1,0 +1,123 @@
+5 2
+11
+11
+00
+00
+10
+0 0
+wrong answer: 17 17
+correct answer: 17 12
+
+// 思路：认为只要同一层比较有无相似就可以判断这个是否是squadtree节点
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+char board[128][129];
+
+struct node {
+    int x;
+    int y;
+    int width;
+    bool is_squdatree_node;
+};
+
+bool all_bit_same(node const &p) {
+    char const sign = board[p.y][p.x];
+    for (int i = 0; i < p.width; ++i) {
+        for (int j = 0; j < p.width; ++j) {
+            if (board[p.y + i][p.x + j] != sign) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+bool same(node const &l, node const &r) {
+    if (l.width != r.width) {
+        return false;
+    }
+    for (int i = 0; i < l.width; ++i) {
+        for (int j = 0; j < l.width; ++j) {
+            if (board[l.y + i][l.x + j] != board[r.y + i][r.x + j]) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+void show(int n, int m) {
+    int width = 1;
+    while (width < n || width < m) width <<= 1;
+    for (int i = n; i < width; ++i) {
+        for (int j = 0; j < width; ++j) {
+            board[i][j] = '0';
+        }
+    }
+    for (int i = 0; i < n; ++i) {
+        for (int j = m; j < width; ++j) {
+            board[i][j] = '0';
+        }
+    }
+    int quadtree_node = 0;
+    int squadtree_node = 0;
+
+    vector<node> parent(64 * 64);
+    vector<node> child(64 * 64);
+    parent.clear();
+    parent.emplace_back(node{0, 0, width, true});
+
+    while (width) {
+        child.clear();
+        for (int i = 0; i < parent.size(); ++i) {
+            node const &it = parent[i];
+            quadtree_node += 1;
+            if (all_bit_same(it)) {
+                if (it.is_squdatree_node) {
+                    squadtree_node += 1;
+                }
+            } else {
+                // it.is_squdatree_node属性继承自其父节点，如果父节点不是squdatree节点，那么它就一定不是squdatree节点
+                // 反之不成立
+                bool is_squdatree_node = it.is_squdatree_node;
+                if (is_squdatree_node) {
+                    for (int j = 0; j < i; ++j) {
+                        if (same(it, parent[j])) {
+                            // 如果该节点和同层的节点相似，那么该节点就不是squdatree节点
+                            is_squdatree_node = false;
+                            break;
+                        }
+                    }
+                }
+
+                if (is_squdatree_node) {
+                    squadtree_node += 1;
+                }
+
+                int new_width = width >> 1;
+                child.emplace_back(node{it.x, it.y, new_width, is_squdatree_node});
+                child.emplace_back(node{it.x + new_width, it.y, new_width, is_squdatree_node});
+                child.emplace_back(node{it.x, it.y + new_width, new_width, is_squdatree_node});
+                child.emplace_back(node{it.x + new_width, it.y + new_width, new_width, is_squdatree_node});
+            }
+        }
+        parent.swap(child);
+        width >>= 1;
+    }
+
+    cout << quadtree_node << ' ' << squadtree_node << endl;
+}
+
+int main() {
+    int n, m;
+    while (cin >> n >> m && n && m) {
+        for (int i = 0; i < n; ++i) {
+            cin >> board[i];
+        }
+        show(n, m);
+    }
+    return 0;
+}

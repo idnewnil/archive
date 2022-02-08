@@ -1,0 +1,7 @@
+# 模型
+pandas==1.3.4
+transformers==4.11.3
+
+# 后端
+flask==1.1.2
+flasgger==0.9.5
